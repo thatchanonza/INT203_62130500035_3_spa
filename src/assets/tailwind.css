@@ -3,14 +3,24 @@
 @tailwind components;
 
 @tailwind utilities;
+
+@layer base {
+  h1 {
+    @apply text-3xl;
+  }
+  h2 {
+    @apply text-2xl;
+  }
+  h3 {
+    @apply text-xl;
+  }
+  h4 {
+    @apply text-lg;
+  }
+}
+
 #app {
   @apply font-serif;
-  /* -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  color: #2c3e50; */
 } 
 #nav a{
   @apply no-underline text-black  border-b-2 border-transparent hover:bg-gray-100 focus:bg-gray-200 uppercase tracking-wide font-bold text-lg p-3 mr-8;
