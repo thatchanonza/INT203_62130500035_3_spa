@@ -1,74 +1,52 @@
 <template>
-<div class="container">
-  <form action="#" class="w-full md:w-1/2 border border-red-500 p-6 ">
-    <h2 class="text-2xl pb-3 font-semibold text-center">Register</h2>
-    <div>
-      <!-- <base-card> -->
+  <div class="container">
+    <base-rating></base-rating>
+    
+    <div style="margin-top: 10px; font-weight: bold">{{ rating }}</div>
+    <form
+      action="#"
+      class="w-full md:w-1/2 border border-red-500 p-6 bg-blue-200"
+    >
+      <h2 class="text-2xl pb-3 font-semibold">Send Message</h2>
+      <div>
         <div class="flex flex-col mb-3">
-          <label for="username">Username</label>
+          <label for="name">Name</label>
           <input
             type="text"
-            id="username"
-            class="input focus:border-red-500 focus:outline-none focus:text-red-500"
+            id="name"
+            class="px-3 py-2 bg-blue-100 border border-gray-900 focus:border-red-500 focus:outline-none focus:bg-gray-800 focus:text-red-500"
             autocomplete="off"
           />
         </div>
-      <!-- </base-card>
-      <base-card> -->
-        <div class="flex flex-col mb-3">
-          <label for="password">Password</label>
-          <input
-            type="text"
-            id="password"
-            class="input focus:border-red-500 focus:outline-none focus:text-red-500"
-            autocomplete="off"
-          />
-        </div>
-        <div class="flex flex-col mb-3">
-          <label for="confirm">Confirm Password</label>
-          <input
-            type="text"
-            id="confirm"
-            class="input focus:border-red-500 focus:outline-none focus:text-red-500"
-            autocomplete="off"
-          />
-        </div>
-      <!-- </base-card>
-      <base-card> -->
         <div class="flex flex-col mb-3">
           <label for="email">Email</label>
           <input
             type="text"
             id="email"
-            class="input border-gray-900 focus:border-red-500 focus:outline-none focus:text-red-500"
+            class="px-3 py-2 bg-blue-100 border border-gray-900 focus:border-red-500 focus:outline-none focus:bg-gray-800 focus:text-red-500"
             autocomplete="off"
           />
         </div>
-      <!-- </base-card>
-      <base-card> -->
+
         <div class="flex flex-col mb-3">
           <label for="message">Message</label>
           <textarea
             rows="4"
             id="message"
-            class="input border-gray-900 focus:border-red-500 focus:outline-none focus:text-red-500"
+            class="px-3 py-2 bg-blue-100 border border-gray-900 focus:border-red-500 focus:outline-none focus:bg-gray-800 focus:text-red-500"
           ></textarea>
         </div>
-      <!-- </base-card> -->
-    </div>
-
-    <!-- <base-card> -->
+      </div>
       <div class="w-full pt-3">
         <button
           type="submit"
-          class="btn w-full border border-red-500 px-4 py-2 transition duration-50 focus:outline-none font-semibold hover:bg-red-500 hover:text-white text-xl cursor-pointer"
+          class="w-full bg-blue-100 border border-red-500 px-4 py-2 transition duration-50 focus:outline-none font-semibold hover:bg-red-500 hover:text-white text-xl cursor-pointer"
         >
           Send
         </button>
       </div>
-    <!-- </base-card> -->
-  </form>
-</div>
+    </form>
+  </div>
 
   <div class="bottom-36 right-2 alert-card">
     <!-- Danger -->
@@ -99,8 +77,7 @@
       </div>
     </div>
   </div>
-  <div class="bottom-2 right-2 alert-card"
-  >
+  <div class="bottom-2 right-2 alert-card">
     <!-- Success -->
     <div
       class="bg-green-50 p-4 rounded flex items-start text-green-600 shadow-lg max-w-xl mx-auto"
@@ -139,9 +116,15 @@
 </template>
 
 <!--alert may be base alert-card component-->
+<script>
+import BaseRating from "../components/BaseRating";
 
-<!--<script>
-  export default {
-  name: "Form",
+export default {
+  components: {
+    BaseRating,
+  },
+  prop:['rating']
+  
 };
-</script>-->
+</script>
+
