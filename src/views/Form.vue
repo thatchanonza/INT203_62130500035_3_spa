@@ -1,10 +1,8 @@
 <template>
   <div class="container">
-    <base-rating></base-rating>
-    
     <div style="margin-top: 10px; font-weight: bold">{{ rating }}</div>
     <form
-      action="#"
+      @submit.prevent="submit"
       class="w-full md:w-1/2 border border-red-500 p-6 bg-blue-200"
     >
       <h2 class="text-2xl pb-3 font-semibold">Send Message</h2>
@@ -14,15 +12,23 @@
           <input
             type="text"
             id="name"
+            v-model.trim="name"
             class="px-3 py-2 bg-blue-100 border border-gray-900 focus:border-red-500 focus:outline-none focus:bg-gray-800 focus:text-red-500"
             autocomplete="off"
           />
         </div>
+
         <div class="flex flex-col mb-3">
-          <label for="email">Email</label>
+          <base-rating @sendRating="getRating" ></base-rating>
+          
+          <p>{{ rating }}</p>
+        </div>
+
+        <div class="flex flex-col mb-3">
+          <label for="email">rating</label>
           <input
             type="text"
-            id="email"
+            id="rating"
             class="px-3 py-2 bg-blue-100 border border-gray-900 focus:border-red-500 focus:outline-none focus:bg-gray-800 focus:text-red-500"
             autocomplete="off"
           />
@@ -32,7 +38,8 @@
           <label for="message">Message</label>
           <textarea
             rows="4"
-            id="message"
+            id="description"
+            v-model.trim="description"
             class="px-3 py-2 bg-blue-100 border border-gray-900 focus:border-red-500 focus:outline-none focus:bg-gray-800 focus:text-red-500"
           ></textarea>
         </div>
@@ -118,12 +125,43 @@
 <!--alert may be base alert-card component-->
 <script>
 import BaseRating from "../components/BaseRating";
+import axios from "axios"
 
 export default {
   components: {
     BaseRating,
+    
   },
-  prop:['rating']
+  data(){
+    return{
+      urlRegisterData: "http://localhost:3000/reviewResults",
+      name:"",
+      rating:0,
+      description:""
+    }
+  },
+  methods:{
+    submit(){
+      // this.name = 
+      // this.rating = rating
+      // this.description = description
+
+      axios.post(this.urlRegisterData, {
+            name: this.name, 
+            rating: this.rating, 
+            description: this.description
+          })
+          .then((response) => {
+            console.log(response);
+            //  window.location.href = '/review'
+          });
+    },
+    getRating(newRating){
+      console.log("ma di hey"+newRating)
+      this.rating = newRating;
+    }
+    
+  }
   
 };
 </script>

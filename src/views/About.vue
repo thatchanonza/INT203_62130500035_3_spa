@@ -2,7 +2,7 @@
   <div class="about">
     <div class="container">
       <h1>This is an about page</h1>
-      <img src="../assets/leng.png" />
+      <img class="" src="../assets/leng.png" />
       <p>Say baby, say baby, say baby</p>
       <br />
       <p>What you doin'? (What you doin'?)</p>
