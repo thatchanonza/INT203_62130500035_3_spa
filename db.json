@@ -17,54 +17,15 @@
       "name": "Leng",
       "rating": "Nice",
       "description": "Nice try, I LUV IT."
-    },
+    }
+    
+  ],
+  "product": [
     {
+      "id": 1,
       "name": "",
-      "rating": "",
-      "description": "",
-      "id": 4
-    },
-    {
-      "name": "Tien",
-      "rating": "4",
-      "description": "good job",
-      "id": 5
-    },
-    {
-      "name": "som",
-      "rating": "",
-      "description": "test 2 rating",
-      "id": 6
-    },
-    {
-      "name": "som",
-      "rating": "",
-      "description": "test 2 rating",
-      "id": 7
-    },
-    {
-      "name": "som",
-      "rating": "",
-      "description": "test 2 rating",
-      "id": 8
-    },
-    {
-      "name": "som",
-      "rating": "",
-      "description": "test 2 rating",
-      "id": 9
-    },
-    {
-      "name": "Wa",
-      "rating": "",
-      "description": "test 1 score rating",
-      "id": 10
-    },
-    {
-      "name": "LengMyBae",
-      "rating": 2,
-      "description": "thx for helping me",
-      "id": 11
+      "price": 120,
+      "src": ""
     }
   ]
 }

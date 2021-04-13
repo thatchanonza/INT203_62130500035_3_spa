@@ -1,7 +1,7 @@
 <template>
   <div>
     <star-rating v-model:rating="rating" @click="sendRating(rating)"></star-rating>
-    <div>Currently Selected: {{ rating }}</div>
+    <div class="mt-2 m-auto"><p> Ratings score: {{ rating }}</p> </div>
   </div>
 </template>
 

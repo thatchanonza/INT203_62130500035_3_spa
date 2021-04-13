@@ -2,5 +2,8 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import './assets/tailwind.css'
+import BaseInput from './components/BaseInput.vue'
+const app = createApp(App)
 
-createApp(App).use(router).mount('#app')
+app.component('base-input', BaseInput)
+app.use(router).mount('#app')
