@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    <div style="margin-top: 10px; font-weight: bold">{{ rating }}</div>
     <form
       @submit.prevent="submit"
       class="w-full md:w-1/2 border-2 border-blue-800 p-6 bg-blue-200"
@@ -17,24 +16,24 @@
 
         <div class="flex flex-row mb-3">
           <div>
-          <label>Select a product</label>
-          <select class="field mx-2" v-model="review.product">
-            <option disabled value="">Please select one</option>
-            <option
-              v-for="option in productResults"
-              :value="option"
-              :key="option"
-              :selected="option === review.product"
-            >
-              {{ option.name }}
-            </option>
-          </select>
+            <label>Select a product</label>
+            <select class="field mx-2" v-model="review.product">
+              <option disabled value="">Please select one</option>
+              <option
+                v-for="option in productResults"
+                :value="option"
+                :key="option"
+                :selected="option === review.product"
+              >
+                {{ option.name }}
+              </option>
+            </select>
           </div>
 
           <div class="flex flex-row ml-12">
             <div class="flex items-center">
-            <label class="mr-3">Ratings  </label>
-            <base-rating @sendRating="getRating"></base-rating>
+              <label class="mr-3">Ratings </label>
+              <base-rating @sendRating="getRating"></base-rating>
             </div>
           </div>
         </div>
@@ -45,7 +44,9 @@
             type="text"
           ></base-input>
         </div>
+        <div class="flex justify-between">
         <pre>{{ review }}</pre>
+        </div>
       </div>
       <div class="w-full pt-3">
         <button
@@ -61,12 +62,10 @@
 
 <!--alert may be base alert-card component-->
 <script>
-import BaseRating from "../components/BaseRating";
 import axios from "axios";
 
 export default {
   components: {
-    BaseRating,
   },
   data() {
     return {
@@ -100,7 +99,6 @@ export default {
       return data;
     },
     getRating(newRating) {
-      console.log("ma di hey" + newRating);
       this.review.rating = newRating;
     },
   },
