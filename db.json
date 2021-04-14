@@ -3,28 +3,75 @@
     {
       "id": 1,
       "name": "Tanawat",
-      "rating": "Great",
+      "rating": 4,
+      "product": {
+        "id": 4,
+        "name": "product4",
+        "price": 400,
+        "src": ""
+      },
       "description": "That good one!, You must try."
     },
     {
       "id": 2,
       "name": "Natchanon",
-      "rating": "Average",
+      "rating": 3,
+      "product": {
+        "id": 1,
+        "name": "product 1",
+        "price": 100,
+        "src": ""
+      },
       "description": "So So"
     },
     {
       "id": 3,
       "name": "Leng",
-      "rating": "Nice",
+      "rating": 4,
+      "product": {
+        "id": 2,
+        "name": "product 2",
+        "price": 200,
+        "src": ""
+      },
       "description": "Nice try, I LUV IT."
+    },
+    {
+      "name": "Tanawat",
+      "rating": 5,
+      "description": "Very good product.",
+      "product": {
+        "id": 1,
+        "name": "product 1",
+        "price": 100,
+        "src": ""
+      },
+      "id": 4
     }
-    
   ],
-  "product": [
+  "products": [
     {
       "id": 1,
-      "name": "",
-      "price": 120,
+      "name": "product 1",
+      "price": 100,
+      "src": ""
+    },
+    {
+      "id": 2,
+      "name": "product 2",
+      "price": 200,
+      "src": ""
+    },
+    {
+      "id": 3,
+      "name": "product 3",
+      "price": 300,
+      "src": ""
+    },
+    {
+      "id": 4,
+      "name": "product 4",
+      "price": 400,
       "src": ""
     }
   ]

@@ -5,9 +5,11 @@
       <h2 class="text-2xl font-bold mb-2 text-gray-800">
         "{{ review.description }}"
       </h2>
+      <p class="text-gray-700"></p>
       <p class="text-gray-700">{{ review.name }}</p>
-      <p class="text-red-700 italic">{{ review.rating }}</p>
+      <p class="text-red-700 italic">Ratings:  {{ review.rating }} ,  Product:  {{ review.product.name }}</p>
     </div>
+    <!--may be button component-->
     <div>
       <button
         class="uppercase p-2.5 flex items-center bg-red-500 text-blue-50 max-w-max shadow-sm hover:shadow-lg rounded-full w-10 h-10 m-1"
