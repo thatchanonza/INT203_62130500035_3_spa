@@ -2,6 +2,8 @@
   <div class="review-list">
     <div class="px-20 pt-4 pb-8 bg-blue-100">
       <div class="container" v-show="form.show">
+        <h1>Edit mode</h1>
+        <p>edit for old value: {{ form.oldValue }}</p>
         <form
           @submit.prevent="submit"
           class="w-full md:w-1/2 border-2 border-blue-800 p-6 bg-blue-200"
@@ -19,17 +21,17 @@
             <div class="flex flex-row mb-3">
               <div>
                 <label>Select a product</label>
-                <!-- <select class="field mx-2" v-model="review.product">
-              <option disabled value="">Please select one</option>
-              <option
-                v-for="option in productResults"
-                :value="option"
-                :key="option"
-                :selected="option === review.product"
-              >
-                {{ option.name }}
-              </option>
-            </select> -->
+                <select class="field mx-2" v-model="newReview.product">
+                  <option disabled value="">Please select one</option>
+                  <option
+                    v-for="option in productResults"
+                    :value="option"
+                    :key="option"
+                    :selected="option === newReview.product"
+                  >
+                    {{ option.name }}
+                  </option>
+                </select>
               </div>
 
               <div class="flex flex-row ml-12">
@@ -60,7 +62,7 @@
           </div>
         </form>
       </div>
-      <p>edit for old value: {{ form.oldValue }}</p>
+
       <review-card
         v-for="result in reviewResults"
         :key="result.id"
@@ -68,13 +70,14 @@
         @deleteReview="deleteArray"
         @updateReview="editArray"
       ></review-card>
+      <pre>{{ this.reviewResults }}</pre>
     </div>
   </div>
-  
 </template>
 
 <script>
 import reviewCard from "../components/reviewCard.vue";
+import axios from "axios";
 
 export default {
   components: {
@@ -83,6 +86,7 @@ export default {
   data() {
     return {
       reviewResults: [],
+      productResults: [],
       form: {
         show: false,
         oldValue: {
@@ -101,8 +105,38 @@ export default {
     };
   },
   methods: {
+    submit() {
+      let id = this.form.oldValue.id;
+      axios
+        .put(`http://localhost:3000/reviewResults/${id}`, this.newReview)
+        .then((response) => {
+          return response.data;
+        })
+        .then(() => {
+          console.log(this.newReview);
+          this.form.show = false;
+        })
+        .then(() => {
+          this.reviewResults = this.reviewResults.map((review) =>
+            review.id === id
+              ? {
+                  ...review,
+                  name: this.newReview.name,
+                  rating: this.newReview.rating,
+                  description: this.newReview.description,
+                  product: this.newReview.product,
+                }
+              : review
+          );
+        });
+    },
     async fetchSurveyResult() {
       const res = await fetch("http://localhost:3000/reviewResults");
+      const data = await res.json();
+      return data;
+    },
+    async fetchProductResult() {
+      const res = await fetch("http://localhost:3000/products");
       const data = await res.json();
       return data;
     },
@@ -112,15 +146,17 @@ export default {
       });
     },
     editArray(reviewValue) {
-      this.reviewResults = this.reviewResults.filter((review) => {
-        return review.id !== reviewValue;
-      });
       this.form.oldValue = reviewValue;
       this.form.show = true;
+    },
+    getRating(newRating) {
+      this.newReview.rating = newRating;
     },
   },
   async created() {
     this.reviewResults = await this.fetchSurveyResult();
+    this.productResults = await this.fetchProductResult();
+    // console.log(this.reviewResults)
   },
 };
 </script>

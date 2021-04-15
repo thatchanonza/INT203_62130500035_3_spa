@@ -93,7 +93,7 @@ export default {
           //  window.location.href = '/review'
         });
     },
-    async fetchSurveyResult() {
+    async fetchProductResult() {
       const res = await fetch("http://localhost:3000/products");
       const data = await res.json();
       return data;
@@ -103,7 +103,7 @@ export default {
     },
   },
   async created() {
-    this.productResults = await this.fetchSurveyResult();
+    this.productResults = await this.fetchProductResult();
   },
 };
 </script>
