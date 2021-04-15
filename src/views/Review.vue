@@ -2,8 +2,7 @@
   <div class="review-list">
     <div class="px-20 pt-4 pb-8 bg-blue-100">
       <div class="container" v-show="form.show">
-        <h1>Edit mode</h1>
-        <p>edit for old value: {{ form.oldValue }}</p>
+        <h1 class="m-2">Edit mode</h1>
         <form
           @submit.prevent="submit"
           class="w-full md:w-1/2 border-2 border-blue-800 p-6 bg-blue-200"
@@ -49,20 +48,19 @@
               ></base-input>
             </div>
             <div class="flex justify-between">
-              <pre>{{ newReview }}</pre>
+              <!-- <pre>{{ newReview }}</pre> -->
             </div>
           </div>
-          <div class="w-full pt-3">
+          <div class="w-full pt-3 mt-4">
             <button
               type="submit"
-              class="w-full bg-blue-100 border border-blue-600 px-4 py-2 transition duration-50 focus:outline-none font-semibold hover:bg-blue-400 hover:text-white text-xl cursor-pointer"
+              class="w-full bg-blue-100 border-2 border-blue-600 px-4 py-2 transition duration-50 focus:outline-none font-semibold hover:bg-blue-400 hover:text-white text-xl cursor-pointer"
             >
               Send
             </button>
           </div>
         </form>
       </div>
-
       <review-card
         v-for="result in reviewResults"
         :key="result.id"
@@ -70,7 +68,6 @@
         @deleteReview="deleteArray"
         @updateReview="editArray"
       ></review-card>
-      <pre>{{ this.reviewResults }}</pre>
     </div>
   </div>
 </template>
@@ -156,7 +153,6 @@ export default {
   async created() {
     this.reviewResults = await this.fetchSurveyResult();
     this.productResults = await this.fetchProductResult();
-    // console.log(this.reviewResults)
   },
 };
 </script>

@@ -45,13 +45,13 @@
           ></base-input>
         </div>
         <div class="flex justify-between">
-        <pre>{{ review }}</pre>
+        <!-- <pre>{{ review }}</pre> -->
         </div>
       </div>
-      <div class="w-full pt-3">
+      <div class="w-full pt-3 mt-4">
         <button
           type="submit"
-          class="w-full bg-blue-100 border border-blue-600 px-4 py-2 transition duration-50 focus:outline-none font-semibold hover:bg-blue-400 hover:text-white text-xl cursor-pointer"
+          class="w-full bg-blue-100 border-2 border-blue-600 px-4 py-2 transition duration-50 focus:outline-none font-semibold hover:bg-blue-400 hover:text-white text-xl cursor-pointer"
         >
           Send
         </button>
@@ -90,7 +90,6 @@ export default {
         })
         .then((response) => {
           console.log(response);
-          //  window.location.href = '/review'
         });
     },
     async fetchProductResult() {

@@ -161,24 +161,16 @@
         </div>
       </div>
     </section>
-    <div class="container">
-      <img alt="Vue logo" src="../assets/logo.png" />
-      <HelloWorld msg="Welcome to Your Vue.js App" />
-    </div>
-    <BaseInput/>
+    
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
-import BaseInput from '../components/BaseInput.vue';
 
 export default {
   name: "Home",
   components: {
-    HelloWorld,
-    BaseInput,
   },
 };
 </script>
